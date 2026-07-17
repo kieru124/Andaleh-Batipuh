@@ -1,0 +1,41 @@
+---
+layout: base.njk
+---
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Website Resmi Pemerintah Nagari</p>
+    <h1>Nagari Andaleh, Nagari Bungo di kaki Gunung Marapi</h1>
+    <p>Kabar kegiatan, pengumuman, dan potensi Nagari Andaleh — pusat bunga hias Sumatera Barat, Nagari Berprestasi peringkat 1 Sumbar dan 3 nasional tahun 2022.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <h2>Berita terbaru</h2>
+    <div class="kartu-grid">
+      {% for post in collections.berita | reverse %}
+        {% if loop.index <= 6 %}
+        <article class="kartu">
+          <time datetime="{{ post.date }}">{{ post.date | tanggal }}</time>
+          <h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+          <p>{{ post.templateContent | ringkas }}</p>
+        </article>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <p style="margin-top:1.2rem"><a class="kembali" href="/berita/">Lihat semua berita →</a></p>
+  </div>
+</section>
+
+<section class="section" id="profil" style="background:#fff">
+  <div class="wrap">
+    <h2>Profil nagari</h2>
+    <p style="max-width:60ch">Nagari Andaleh terletak di kaki Gunung Marapi, Kecamatan Batipuh, Kabupaten Tanah Datar, pada ketinggian ±900 mdpl. Dijuluki "Nagari Bungo" sebagai pusat bunga hias Sumatera Barat, dengan hasil utama sayuran, kopi, kayu manis, dan aneka bunga. Nagari ini juga memiliki wisata alam Rafflesia Arnoldi di Cubadia dan air terjun Dindianghari.</p>
+    <div class="data-grid">
+      <div class="data"><b>1.725</b><span>Jiwa penduduk</span></div>
+      <div class="data"><b>4</b><span>Jorong</span></div>
+      <div class="data"><b>21 km²</b><span>Luas wilayah</span></div>
+      <div class="data"><b>±900 m</b><span>Ketinggian (mdpl)</span></div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,39 @@
+# ============================================================
+# KONFIGURASI ADMIN WEB DESA
+# Bagian "backend" di bawah WAJIB diganti dengan nilai dari
+# dashboard DecapBridge (lihat PANDUAN.md langkah 4).
+# ============================================================
+backend:
+  name: git-gateway
+  repo: GANTI_USERNAME_GITHUB/GANTI_NAMA_REPO # contoh: budidesa/web-desa
+  branch: main
+  identity_url: GANTI_DARI_DECAPBRIDGE # contoh: https://auth.decapbridge.com/sites/xxxxx
+  gateway_url: https://gateway.decapbridge.com
+
+  # Tampilan halaman login berbahasa manusia
+  commit_messages:
+    create: Tambah {{collection}} "{{slug}}"
+    update: Ubah {{collection}} "{{slug}}"
+    delete: Hapus {{collection}} "{{slug}}"
+    uploadMedia: Unggah "{{path}}"
+    deleteMedia: Hapus "{{path}}"
+
+site_url: https://nagariandaleh.my.id
+locale: id
+
+media_folder: src/img/uploads
+public_folder: /img/uploads
+
+collections:
+  - name: berita
+    label: Berita
+    label_singular: Berita
+    folder: src/berita/posts
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: Judul, name: title, widget: string }
+      - { label: Tanggal, name: date, widget: datetime, date_format: DD-MM-YYYY, time_format: false }
+      - { label: Foto utama (opsional), name: thumbnail, widget: image, required: false }
+      - { label: Isi berita, name: body, widget: markdown }
+      - { label: Layout, name: layout, widget: hidden, default: post.njk }

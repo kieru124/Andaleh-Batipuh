@@ -1,0 +1,18 @@
+---
+layout: base.njk
+title: Berita
+---
+<section class="section">
+  <div class="wrap">
+    <h2>Semua berita</h2>
+    <div class="kartu-grid">
+      {% for post in collections.berita | reverse %}
+      <article class="kartu">
+        <time datetime="{{ post.date }}">{{ post.date | tanggal }}</time>
+        <h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+        <p>{{ post.templateContent | ringkas }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>

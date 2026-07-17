@@ -1,0 +1,14 @@
+---
+layout: base.njk
+---
+<section class="section">
+  <div class="wrap artikel">
+    <header>
+      <time datetime="{{ page.date }}">{{ page.date | tanggal }}</time>
+      <h1>{{ title }}</h1>
+    </header>
+    {% if thumbnail %}<p><img src="{{ thumbnail }}" alt="{{ title }}"></p>{% endif %}
+    <div class="isi">{{ content | safe }}</div>
+    <a class="kembali" href="/berita/">← Kembali ke semua berita</a>
+  </div>
+</section>

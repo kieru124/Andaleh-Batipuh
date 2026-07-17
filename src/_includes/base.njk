@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if title %}{{ title }} · {% endif %}Nagari Andaleh</title>
+  <meta name="description" content="Website resmi Nagari Andaleh — kabar, layanan, dan potensi desa.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-in">
+      <a class="brand" href="/">
+        <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+          <path d="M20 4 L36 18 H31 V36 H24 V26 H16 V36 H9 V18 H4 Z" fill="currentColor"/>
+        </svg>
+        <span>
+          <strong>Nagari Andaleh</strong>
+          <small>Kec. Batipuh · Kab. Tanah Datar</small>
+        </span>
+      </a>
+      <nav class="nav">
+        <a href="/">Beranda</a>
+        <a href="/berita/">Berita</a>
+        <a href="/#profil">Profil</a>
+        <a href="/#kontak">Kontak</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>{{ content | safe }}</main>
+
+  <footer class="footer" id="kontak">
+    <div class="wrap footer-grid">
+      <div>
+        <h3>Pemerintah Nagari Andaleh</h3>
+        <p>Nagari Andaleh, Kecamatan Batipuh,<br>Kabupaten Tanah Datar, Sumatera Barat</p>
+      </div>
+      <div>
+        <h3>Layanan kantor wali nagari</h3>
+        <p>Senin–Jumat, 08.00–15.00 WIB<br>Telepon/WA: 0812-3456-7890<br>Email: nagariandaleh@gmail.com</p>
+      </div>
+      <div>
+        <h3>Tautan</h3>
+        <p><a href="/berita/">Arsip berita</a><br><a href="/admin/">Masuk admin</a></p>
+      </div>
+    </div>
+    <div class="wrap footer-note">© {{ tahun }} Pemerintah Nagari Andaleh</div>
+  </footer>
+</body>
+</html>
