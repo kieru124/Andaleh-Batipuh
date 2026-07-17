@@ -1,39 +1,32 @@
-# ============================================================
-# KONFIGURASI ADMIN WEB DESA
-# Bagian "backend" di bawah WAJIB diganti dengan nilai dari
-# dashboard DecapBridge (lihat PANDUAN.md langkah 4).
-# ============================================================
+# Use DecapBridge PKCE auth (required)
 backend:
   name: git-gateway
-  repo: GANTI_USERNAME_GITHUB/GANTI_NAMA_REPO # contoh: budidesa/web-desa
+  repo: kieru124/Andaleh-Batipuh
   branch: main
-  identity_url: GANTI_DARI_DECAPBRIDGE # contoh: https://auth.decapbridge.com/sites/xxxxx
+  auth_type: pkce
+  base_url: https://auth.decapbridge.com
+  auth_endpoint: /sites/ff086096-b4ca-409f-828d-0b9efff77c4c/pkce
+  auth_token_endpoint: /sites/ff086096-b4ca-409f-828d-0b9efff77c4c/token
   gateway_url: https://gateway.decapbridge.com
 
-  # Tampilan halaman login berbahasa manusia
+  # See who did what (optional)
   commit_messages:
-    create: Tambah {{collection}} "{{slug}}"
-    update: Ubah {{collection}} "{{slug}}"
-    delete: Hapus {{collection}} "{{slug}}"
-    uploadMedia: Unggah "{{path}}"
-    deleteMedia: Hapus "{{path}}"
+    create: Create {{collection}} “{{slug}}” - {{author-name}} <{{author-login}}> via DecapBridge
+    update: Update {{collection}} “{{slug}}” - {{author-name}} <{{author-login}}> via DecapBridge
+    delete: Delete {{collection}} “{{slug}}” - {{author-name}} <{{author-login}}> via DecapBridge
+    uploadMedia: Upload “{{path}}” - {{author-name}} <{{author-login}}> via DecapBridge
+    deleteMedia: Delete “{{path}}” - {{author-name}} <{{author-login}}> via DecapBridge
+    openAuthoring: Message {{message}} - {{author-name}} <{{author-login}}> via DecapBridge
 
-site_url: https://nagariandaleh.my.id
-locale: id
+# Enable PKCE fields (optional, recommended)
+auth:
+  email_claim: email
+  first_name_claim: first_name
+  last_name_claim: last_name
+  avatar_url_claim: avatar_url
 
-media_folder: src/img/uploads
-public_folder: /img/uploads
+# Better Decap + Bridge logo (optional)
+logo_url: https://decapbridge.com/decapcms-with-bridge.svg
 
-collections:
-  - name: berita
-    label: Berita
-    label_singular: Berita
-    folder: src/berita/posts
-    create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    fields:
-      - { label: Judul, name: title, widget: string }
-      - { label: Tanggal, name: date, widget: datetime, date_format: DD-MM-YYYY, time_format: false }
-      - { label: Foto utama (opsional), name: thumbnail, widget: image, required: false }
-      - { label: Isi berita, name: body, widget: markdown }
-      - { label: Layout, name: layout, widget: hidden, default: post.njk }
+# Add site links in Decap CMS (optional)
+site_url: https://6a59a2dbd6a3a2a628e9799a--classy-tanuki-3a6635.netlify.app
